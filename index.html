@@ -1,118 +1,91 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>تکالیف و آزمون‌ها</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Tahoma, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<meta charset="UTF-8">
+<title>تکالیف و آزمون‌ها</title>
 
-        .container {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 28px;
-            letter-spacing: 1px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .section h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            border-right: 4px solid #00eaff;
-            padding-right: 10px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        ul li {
-            background: rgba(255, 255, 255, 0.12);
-            margin-bottom: 10px;
-            padding: 12px 15px;
-            border-radius: 12px;
-            transition: 0.3s;
-        }
-
-        ul li:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(-5px);
-        }
-
-        a {
-            color: #00eaff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            opacity: 0.7;
-            margin-top: 20px;
-        }
-    </style>
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI,Tahoma,sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.container{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:30px;
+    width:90%;
+    max-width:600px;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+h1{text-align:center;margin-bottom:25px;}
+.section{margin-bottom:30px;}
+.section h2{
+    border-right:4px solid #00eaff;
+    padding-right:10px;
+}
+ul{list-style:none;padding:0}
+li{
+    background:rgba(255,255,255,.12);
+    margin-bottom:10px;
+    padding:12px;
+    border-radius:12px;
+}
+a{color:#00eaff;text-decoration:none;font-weight:bold}
+</style>
 </head>
-<body>
 
+<body>
 <div class="container">
     <h1>تکالیف و آزمون‌ها</h1>
 
     <div class="section">
         <h2>تکالیف:</h2>
-        <ul>
-            <li>تکلیف اول: حل تمرین صفحه ۲۳</li>
-            <li>تکلیف دوم: خلاصه‌نویسی فصل دوم</li>
-            <li>تکلیف سوم: پاسخ به سوالات تشریحی</li>
-            <!-- اینجا می‌تونی تکالیف رو عوض کنی -->
-        </ul>
+        <ul id="takalif"></ul>
     </div>
 
     <div class="section">
-        <h2>آزمون فصل ...</h2>
-        <ul>
-            <li>
-                آزمون فصل 
-                <strong>3</strong>
-                —
-                <a href="https://example.com">
-                    مشاهده آزمون
-                </a>
-            </li>
-            <!-- عدد فصل و لینک رو همین‌جا تغییر بده -->
-        </ul>
-    </div>
-
-    <div class="footer">
+        <h2 id="azmoon-title">آزمون فصل ...</h2>
+        <a id="azmoon-link" href="#" target="_blank">مشاهده آزمون</a>
     </div>
 </div>
 
+<script>
+fetch("a.txt")
+.then(res => res.text())
+.then(data => {
+    const lines = data.split("\n").map(l => l.trim());
+
+    let mode = "";
+    let takalifList = document.getElementById("takalif");
+
+    lines.forEach(line => {
+        if(line === "TAKALIF:") mode = "takalif";
+        else if(line === "AZMOON:") mode = "azmoon";
+        else if(mode === "takalif" && line){
+            let li = document.createElement("li");
+            li.textContent = line;
+            takalifList.appendChild(li);
+        }
+        else if(mode === "azmoon"){
+            if(line.startsWith("فصل=")){
+                document.getElementById("azmoon-title").textContent =
+                    "آزمون فصل " + line.split("=")[1];
+            }
+            if(line.startsWith("لینک=")){
+                document.getElementById("azmoon-link").href =
+                    line.split("=")[1];
+            }
+        }
+    });
+});
+    <h1>ساخته شده توسط عطا دهقان نصیری</h1>
+</script>
 </body>
 </html>
