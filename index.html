@@ -7,8 +7,8 @@
 <style>
 body{
     margin:0;
-    font-family:Segoe UI,Tahoma,sans-serif;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color:#fff;
     min-height:100vh;
     display:flex;
@@ -16,28 +16,62 @@ body{
     align-items:center;
 }
 .container{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
-    border-radius:20px;
-    padding:30px;
-    width:90%;
-    max-width:600px;
-    box-shadow:0 20px 40px rgba(0,0,0,.4);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: 30px;
+    width: 90%;
+    max-width: 650px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.45);
 }
-h1{text-align:center;margin-bottom:25px;}
-.section{margin-bottom:30px;}
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    letter-spacing:1px;
+}
+.section{
+    margin-bottom:35px;
+}
 .section h2{
     border-right:4px solid #00eaff;
-    padding-right:10px;
+    padding-right:12px;
+    margin-bottom:15px;
 }
-ul{list-style:none;padding:0}
+ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
 li{
-    background:rgba(255,255,255,.12);
-    margin-bottom:10px;
-    padding:12px;
-    border-radius:12px;
+    background: rgba(255,255,255,0.15);
+    margin-bottom:12px;
+    padding:14px;
+    border-radius:14px;
+    transition:0.3s;
 }
-a{color:#00eaff;text-decoration:none;font-weight:bold}
+li:hover{
+    background: rgba(255,255,255,0.25);
+    transform: translateX(-6px);
+}
+.exam-box{
+    background: rgba(0,234,255,0.15);
+    padding:15px;
+    border-radius:14px;
+}
+.exam-box a{
+    color:#00eaff;
+    font-weight:bold;
+    text-decoration:none;
+}
+.exam-box a:hover{
+    text-decoration:underline;
+}
+.footer{
+    text-align:center;
+    margin-top:35px;
+    font-size:13px;
+    opacity:0.75;
+}
 </style>
 </head>
 
@@ -47,45 +81,26 @@ a{color:#00eaff;text-decoration:none;font-weight:bold}
 
     <div class="section">
         <h2>تکالیف:</h2>
-        <ul id="takalif"></ul>
+        <ul>
+            <li>حل تمرین صفحه ۲۳</li>
+            <li>خلاصه‌نویسی فصل دوم</li>
+            <li>پاسخ به سوالات تشریحی</li>
+            <!-- اینجا تکالیف رو تغییر بده -->
+        </ul>
     </div>
 
     <div class="section">
-        <h2 id="azmoon-title">آزمون فصل ...</h2>
-        <a id="azmoon-link" href="#" target="_blank">مشاهده آزمون</a>
+        <h2>آزمون فصل 5</h2>
+        <div class="exam-box">
+            <p>برای شرکت در آزمون روی لینک زیر کلیک کنید:</p>
+            <a href="https://example.com" target="_blank">مشاهده آزمون</a>
+            <!-- عدد فصل و لینک رو اینجا تغییر بده -->
+        </div>
+    </div>
+
+    <div class="footer">
+        ساخته شده توسط عطا دهقان نصیری
     </div>
 </div>
-
-<script>
-fetch("a.txt")
-.then(res => res.text())
-.then(data => {
-    const lines = data.split("\n").map(l => l.trim());
-
-    let mode = "";
-    let takalifList = document.getElementById("takalif");
-
-    lines.forEach(line => {
-        if(line === "TAKALIF:") mode = "takalif";
-        else if(line === "AZMOON:") mode = "azmoon";
-        else if(mode === "takalif" && line){
-            let li = document.createElement("li");
-            li.textContent = line;
-            takalifList.appendChild(li);
-        }
-        else if(mode === "azmoon"){
-            if(line.startsWith("فصل=")){
-                document.getElementById("azmoon-title").textContent =
-                    "آزمون فصل " + line.split("=")[1];
-            }
-            if(line.startsWith("لینک=")){
-                document.getElementById("azmoon-link").href =
-                    line.split("=")[1];
-            }
-        }
-    });
-});
-    <h1>ساخته شده توسط عطا دهقان نصیری</h1>
-</script>
 </body>
 </html>
