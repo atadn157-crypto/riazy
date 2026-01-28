@@ -1,105 +1,146 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>تکالیف و آزمون‌ها</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تکالیف و آزمون‌ها</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
 
-<style>
-body{
-    margin:0;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color:#fff;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-.container{
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(12px);
-    border-radius: 22px;
-    padding: 30px;
-    width: 90%;
-    max-width: 650px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.45);
-}
-h1{
-    text-align:center;
-    margin-bottom:30px;
-    letter-spacing:1px;
-}
-.section{
-    margin-bottom:35px;
-}
-.section h2{
-    border-right:4px solid #00eaff;
-    padding-right:12px;
-    margin-bottom:15px;
-}
-ul{
-    list-style:none;
-    padding:0;
-    margin:0;
-}
-li{
-    background: rgba(255,255,255,0.15);
-    margin-bottom:12px;
-    padding:14px;
-    border-radius:14px;
-    transition:0.3s;
-}
-li:hover{
-    background: rgba(255,255,255,0.25);
-    transform: translateX(-6px);
-}
-.exam-box{
-    background: rgba(0,234,255,0.15);
-    padding:15px;
-    border-radius:14px;
-}
-.exam-box a{
-    color:#00eaff;
-    font-weight:bold;
-    text-decoration:none;
-}
-.exam-box a:hover{
-    text-decoration:underline;
-}
-.footer{
-    text-align:center;
-    margin-top:35px;
-    font-size:13px;
-    opacity:0.75;
-}
-</style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            color: #00d4ff;
+            text-shadow: 0 2px 10px rgba(0, 212, 255, 0.4);
+        }
+        h2 { text-align: center; margin: 50px 0 25px; color: #a5d8ff; font-weight: 400; }
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            overflow: hidden;
+            transition: all 0.35s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+        .card-media {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #111;
+            overflow: hidden;
+        }
+        .card-media img, .card-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .card-media .pdf-preview {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .card-content { padding: 20px; }
+        .card-title { font-size: 1.3rem; margin-bottom: 12px; color: #ffffff; }
+        .card-desc { font-size: 0.95rem; color: #c0d4e8; line-height: 1.6; margin-bottom: 15px; }
+        .btn {
+            display: inline-block;
+            background: #00d4ff;
+            color: #0f2027;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #4dd0ff; transform: scale(1.05); }
+        .no-media {
+            height: 140px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #88aaff;
+        }
+    </style>
 </head>
-
 <body>
-<div class="container">
-    <h1>تکالیف و آزمون‌ها</h1>
 
-    <div class="section">
-        <h2>تکالیف:</h2>
-        <ul>
-            <li>نوشتن ریاضی تا صفحه ی 70</li>
-            <!-- اینجا تکالیف رو تغییر بده -->
-        </ul>
-    </div>
+    <div class="container">
+        <h1>تکالیف و آزمون‌ها</h1>
 
-    <div class="section">
-        <h2>آزمون فصل 5</h2>
-        <div class="exam-box">
-            <p>برای شرکت در آزمون روی لینک زیر کلیک کنید:</p>
-            <a href="https://formafzar.com/form/c4lon" target="_blank">مشاهده آزمون 1</a>
-            <a href="https://app.epoll.ir/79077525" target="_blank">         مشاهده آزمون2           </a>
-            <!-- عدد فصل و لینک رو اینجا تغییر بده -->
+        <h2>تکالیف</h2>
+        <div class="card-list">
+
+            <!-- مثال ۱: تکلیف با عکس آپلود شده در گیت‌هاب -->
+            <div class="card">
+                <div class="card-media">
+                    <img src="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/math-problems.jpg" alt="مسائل ریاضی">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">تکلیف فصل ۱ - معادلات</div>
+                    <div class="card-desc">حل مسائل صفحه ۱۲ تا ۱۸ کتاب</div>
+                    <a href="https://raw.githubusercontent.com/atadn157-crypto/riazy/main/assets/photo_2026-01-28_20-03-24.jpg?raw=true" class="btn" download>دانلود PDF تکلیف</a>
+                </div>
+            </div>
+
+            <!-- مثال ۲: تکلیف با ویدیو کوتاه آپلود شده (mp4) -->
+            <div class="card">
+                <div class="card-media">
+                    <video controls>
+                        <source src="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/experiment-video.mp4" type="video/mp4">
+                        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+                    </video>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">تمرین فیزیک - آزمایش نور</div>
+                    <div class="card-desc">ویدیو را ببینید و گزارش بنویسید</div>
+                </div>
+            </div>
+
+            <!-- مثال ۳: فقط PDF (بدون پیش‌نمایش بزرگ) -->
+            <div class="card">
+                <div class="card-media no-media">فایل PDF</div>
+                <div class="card-content">
+                    <div class="card-title">تکلیف ادبیات فصل ۲</div>
+                    <a href="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/literature.pdf?raw=true" class="btn" download>دانلود PDF</a>
+                </div>
+            </div>
+
+            <!-- مثال ۴: PDF با پیش‌نمایش (iframe) -->
+            <div class="card">
+                <div class="card-media">
+                    <iframe class="pdf-preview" src="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/test.pdf"></iframe>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">نمونه آزمون قدیمی</div>
+                    <a href="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/test.pdf?raw=true" class="btn" download>دانلود کامل</a>
+                </div>
+            </div>
+
         </div>
+
+        <!-- بخش آزمون‌ها هم دقیقاً به همین شکل -->
+
     </div>
 
-    <div class="footer">
-        ساخته شده توسط عطا دهقان نصیری
-    </div>
-</div>
 </body>
 </html>
