@@ -40,26 +40,29 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.25);
         }
         .card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
-        .card-media {
+        .media-container {
             width: 100%;
             aspect-ratio: 16 / 9;
             background: #111;
             overflow: hidden;
+            position: relative;
         }
-        .card-media img, .card-media video {
+        .media-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
-        .card-media .pdf-preview {
+        .media-container iframe,
+        .media-container video {
+            position: absolute;
+            top: 0; left: 0;
             width: 100%;
             height: 100%;
             border: none;
         }
-        .card-content { padding: 20px; }
-        .card-title { font-size: 1.3rem; margin-bottom: 12px; color: #ffffff; }
-        .card-desc { font-size: 0.95rem; color: #c0d4e8; line-height: 1.6; margin-bottom: 15px; }
+        .content { padding: 20px; }
+        .title { font-size: 1.3rem; margin-bottom: 12px; color: #ffffff; }
+        .desc { font-size: 0.95rem; color: #c0d4e8; line-height: 1.6; margin-bottom: 15px; }
         .btn {
             display: inline-block;
             background: #00d4ff;
@@ -90,56 +93,78 @@
         <h2>تکالیف</h2>
         <div class="card-list">
 
-            <!-- مثال ۱: تکلیف با عکس آپلود شده در گیت‌هاب -->
+            <!-- مثال ۱: عکس با لینک مستقیم -->
             <div class="card">
-                <div class="card-media">
-                    <img src="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/math-problems.jpg" alt="مسائل ریاضی">
+                <div class="media-container">
+                    <img src="https://example.com/your-photo-link.jpg" alt="عکس تکلیف">
                 </div>
-                <div class="card-content">
-                    <div class="card-title">تکلیف فصل ۱ - معادلات</div>
-                    <div class="card-desc">حل مسائل صفحه ۱۲ تا ۱۸ کتاب</div>
-                    <a href="https://raw.githubusercontent.com/atadn157-crypto/riazy/main/assets/photo_2026-01-28_20-03-24.jpg?raw=true" class="btn" download>دانلود PDF تکلیف</a>
+                <div class="content">
+                    <div class="title">تکلیف فصل ۱</div>
+                    <div class="desc">مسائل ریاضی + شکل‌ها</div>
+                    <!-- لینک اختیاری (دانلود یا صفحه) – اگر نمی‌خوای حذف کن -->
+                    <!-- <a href="https://github.com/atadn157-crypto/riazy/blob/main/files/photo_2026-01-28_20-03-24.jpg?raw=true" class="btn" target="_blank">دانلود فایل</a> -->
                 </div>
             </div>
 
-            <!-- مثال ۲: تکلیف با ویدیو کوتاه آپلود شده (mp4) -->
+            <!-- مثال ۲: ویدیو یوتیوب (embed) -->
             <div class="card">
-                <div class="card-media">
-                    <video controls>
-                        <source src="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/experiment-video.mp4" type="video/mp4">
-                        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-                    </video>
+                <div class="media-container">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" 
+                            title="ویدیو آموزشی" 
+                            allowfullscreen></iframe>
                 </div>
-                <div class="card-content">
-                    <div class="card-title">تمرین فیزیک - آزمایش نور</div>
-                    <div class="card-desc">ویدیو را ببینید و گزارش بنویسید</div>
+                <div class="content">
+                    <div class="title">تمرین فصل ۲ - ویدیو</div>
+                    <div class="desc">ویدیو را ببینید و تمرین کنید</div>
                 </div>
             </div>
 
-            <!-- مثال ۳: فقط PDF (بدون پیش‌نمایش بزرگ) -->
+            <!-- مثال ۳: ویدیو آپارات (embed) -->
             <div class="card">
-                <div class="card-media no-media">فایل PDF</div>
-                <div class="card-content">
-                    <div class="card-title">تکلیف ادبیات فصل ۲</div>
-                    <a href="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/literature.pdf?raw=true" class="btn" download>دانلود PDF</a>
+                <div class="media-container">
+                    <iframe src="https://www.aparat.com/video/video/embed/videohash/VIDEO_HASH_HERE/vt/frame" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="content">
+                    <div class="title">آزمایش فیزیک</div>
+                    <div class="desc">توضیح ویدیو در آپارات</div>
                 </div>
             </div>
 
-            <!-- مثال ۴: PDF با پیش‌نمایش (iframe) -->
+            <!-- مثال ۴: عکس + لینک -->
             <div class="card">
-                <div class="card-media">
-                    <iframe class="pdf-preview" src="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/test.pdf"></iframe>
+                <div class="media-container">
+                    <img src="https://i.imgur.com/your-image-id.jpg" alt="نمودار">
                 </div>
-                <div class="card-content">
-                    <div class="card-title">نمونه آزمون قدیمی</div>
-                    <a href="https://raw.githubusercontent.com/USERNAME/REPO-NAME/main/assets/test.pdf?raw=true" class="btn" download>دانلود کامل</a>
+                <div class="content">
+                    <div class="title">تکلیف علوم فصل ۳</div>
+                    <div class="desc">نمودار را بررسی کنید</div>
+                    <a href="https://forms.gle/your-form-link" class="btn" target="_blank">ارسال جواب</a>
+                </div>
+            </div>
+
+            <!-- بدون رسانه -->
+            <div class="card">
+                <div class="media-container no-media">بدون عکس یا ویدیو</div>
+                <div class="content">
+                    <div class="title">تکلیف ساده</div>
+                    <div class="desc">فقط حل تمرین کتاب</div>
                 </div>
             </div>
 
         </div>
 
-        <!-- بخش آزمون‌ها هم دقیقاً به همین شکل -->
-
+        <h2>آزمون‌ها</h2>
+        <div class="card-list">
+            <!-- آزمون‌ها رو به همین شکل اضافه کن -->
+            <div class="card">
+                <div class="media-container no-media">آزمون فصل ۱</div>
+                <div class="content">
+                    <div class="title">آزمون فصل ۱</div>
+                    <a href="https://your-exam-link.com" class="btn" target="_blank">شروع آزمون</a>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
